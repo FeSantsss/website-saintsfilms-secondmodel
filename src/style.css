@@ -169,18 +169,6 @@ e melhorar SEO
   margin-top: 20px;
 }
 
-.p-global {
-  font-family: montserrat, sans-serif;
-  font-size: clamp(0.8rem, 3vw, 1rem);
-  margin: 20px auto;
-  overflow: hidden;
-  line-height: 1.5;
-  word-wrap: break-word;
-  transition: 0.2s;
-  transition-behavior: smooth;
-  width: 100%;
-}
-
 * {
   color-scheme: light;
   scroll-behavior: smooth;
@@ -196,9 +184,9 @@ cursor: pointer;
 }
 
 .p-global {
-  font-family: montserrat, sans-serif;
+  font-family: var(--font-primary);
   font-size: clamp(0.8rem, 3vw, 1rem);
-  margin: var(--space-lg) 0px 0px;
+  margin: var(--space-md) 0px 0px;
   overflow: hidden;
   line-height: 1.5;
   word-wrap: break-word;
