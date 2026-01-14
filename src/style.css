@@ -57,7 +57,7 @@ header {
     right: 1px;
     padding: 26px 30px;
     border-end-start-radius: var(--radius-sm);
-
+    
     background: #ffffffde;
 
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -70,7 +70,23 @@ header {
   }
 
   .burguer-menu {
-    display: block;
+   display: block;
+  }
+
+  .burguer-menu div {
+    width: 32px;
+    height: 2px;
+    background: var(--black-deep);
+    margin: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .first-line.active {
+    transform: rotate(-400deg) translate(-8px, 8px);
+  }
+  .second-line.active {
+    transform: rotate(400deg) translate(-1px, 1px);
   }
 }
 

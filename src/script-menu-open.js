@@ -1,10 +1,16 @@
 const menu = document.querySelector('.nav-header-menu');
 const burguer = document.querySelector('.burguer-menu');
+const line1 = document.querySelector('.first-line');
+const line2 = document.querySelector('.second-line');
 
 function openMenu() {
-  const isOpen = menu.classList.toggle('is-open');
-
-  burguer.src = isOpen
-    ? burguer.dataset.open
-    : burguer.dataset.close;
+  if (menu.classList.contains('is-open')) {
+    menu.classList.remove('is-open');
+    line1.classList.remove('active');
+    line2.classList.remove('active');
+  } else {
+    menu.classList.add('is-open');
+    line1.classList.add('active');
+    line2.classList.add('active');
+  }
 }
