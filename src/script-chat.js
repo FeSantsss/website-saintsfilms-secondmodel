@@ -1,144 +1,176 @@
-const casamento = [
-  { label: "Data do casamento", name: "data", type: "date" },
-  { label: "Formato", name: "formato", type: "select", options: ["Cerimônia", "Festa", "Ambos"] },
-  { label: "Convidados", name: "convidados", type: "number" },
-  { label: "Descreva brevemente", name: "descricao", type: "textarea" }
-
-];
-
-const reels = [
-  { label: "Nome da marca", name: "marca", type: "text" },
-  { label: "Objetivo", name: "objetivo", type: "select", options: ["Engajamento", "Vendas", "Autoridade"] },
-  { label: "Quantidade de vídeos", name: "quantidade", type: "number" },
-  { label: "Descreva brevemente", name: "descricao", type: "textarea" }
-
-];
-
-const videoAereo = [
-  { label: "Local", name: "local", type: "text" },
-  { label: "Data", name: "data", type: "date" },
-  { label: "Área", name: "area", type: "select", options: ["Urbana", "Rural"] },
-  { label: "Descreva brevemente", name: "descricao", type: "textarea" }
-
-];
-
-const evento = [
-  { label: "Tipo de evento", name: "tipo", type: "select", options: ["Aniversário", "Formatura", "Corporativo", "Esportivo"] },
-  { label: "Data", name: "data", type: "date" },
-  { label: "Duração (horas)", name: "duracao", type: "number" },
-  { label: "Descreva brevemente", name: "descricao", type: "textarea" }
-];
-
-const perguntas = {
-  casamento,
-  reels,
-  videoAereo,
-  evento
+const fluxos = {
+  casamento: [
+    { label: "Data do casamento:", name: "data", type: "date" },
+    { label: "Formato:", name: "formato", type: "select", options: ["Cerimônia", "Festa", "Ambos"] },
+    { label: "Convidados:", name: "convidados", type: "number" },
+    { label: "Descreva brevemente:", name: "descricao", type: "textarea" }
+  ],
+  reels: [
+    { label: "Nome da marca:", name: "marca", type: "text" },
+    { label: "Objetivo:", name: "objetivo", type: "select", options: ["Engajamento", "Vendas", "Autoridade"] },
+    { label: "Quantidade de vídeos:", name: "quantidade", type: "number" },
+    { label: "Descreva brevemente:", name: "descricao", type: "textarea" }
+  ],
+  Aereo: [
+    { label: "Local:", name: "local", type: "text" },
+    { label: "Data:", name: "data", type: "date" },
+    { label: "Área:", name: "area", type: "select", options: ["Urbana", "Rural"] },
+    { label: "Descreva brevemente::", name: "descricao", type: "textarea" }
+  ],
+  evento: [
+    { label: "Tipo de evento:", name: "tipo", type: "select", options: ["Aniversário", "Formatura", "Corporativo", "Esportivo"] },
+    { label: "Data:", name: "data", type: "date" },
+    { label: "Duração (horas):", name: "duracao", type: "number" },
+    { label: "Descreva brevemente:", name: "descricao", type: "textarea" }
+  ]
 };
 
-const servicoSelect = document.getElementById("servico");
-const form = document.getElementById("formulario");
+document.addEventListener("DOMContentLoaded", () => {
 
-let servicoAtual = "";
+  const mensagens = document.getElementById("mensagens");
+  const inputArea = document.getElementById("input-area");
 
-servicoSelect.addEventListener("change", () => {
-  servicoAtual = servicoSelect.value;
-  renderForm(servicoAtual);
-});
 
-function renderForm(servico) {
-  form.innerHTML = "";
+  let servico = null;
+  let passo = 0;
+  const respostas = {};
 
-  if (!perguntas[servico]) return;
 
-  perguntas[servico].forEach(campo => {
-    const wrapper = document.createElement("div");
-    wrapper.className = "campo";
+  function perguntarServico() {
+    botMsg("Qual serviço você deseja contratar?");
+    
+    const select = document.createElement("select");
+    select.innerHTML = `
+      <option value="">Selecione</option>
+      <option value="casamento">Casamento</option>
+      <option value="reels">Produção de Reels</option>
+      <option value="Aereo">Vídeo Aéreo</option>
+      <option value="evento">Evento</option>
+    `;
 
-    const label = document.createElement("label");
-    label.textContent = campo.label;
+    const btn = document.createElement("button");
+    btn.innerText = "Continuar";
+
+    btn.onclick = () => {
+      if (!select.value) return;
+      servico = select.value;
+      userMsg(select.options[select.selectedIndex].text);
+      inputArea.innerHTML = "";
+      passo = 0;
+      proximaPergunta();
+    };
+
+    inputArea.innerHTML = "";
+    inputArea.append(select, btn);
+  }
+
+
+  //delay de mensagem
+
+  function botMsg(texto, delay = 600) {
+    setTimeout(() => {
+      const div = document.createElement("div");
+      div.className = "msg bot";
+      div.innerText = texto;
+      mensagens.appendChild(div);
+      mensagens.scrollTop = mensagens.scrollHeight;
+    }, delay);
+  }
+
+  function userMsg(texto) {
+    const div = document.createElement("div");
+    div.className = "msg user";
+    div.innerText = texto;
+    mensagens.appendChild(div);
+    mensagens.scrollTop = mensagens.scrollHeight;
+  }
+
+  //funcionamento de perguntas
+
+  function proximaPergunta() {
+    const pergunta = fluxos[servico][passo];
+    if (!pergunta) return finalizar();
+
+    botMsg(pergunta.label);
+    renderInput(pergunta);
+  }
+
+
+  //inputs dinamicos
+
+  function renderInput(campo) {
+    inputArea.innerHTML = "";
 
     let input;
 
     if (campo.type === "select") {
       input = document.createElement("select");
-
-      const placeholder = document.createElement("option");
-      placeholder.value = "";
-      placeholder.textContent = "Selecione";
-      placeholder.disabled = true;
-      placeholder.selected = true;
-
-      input.appendChild(placeholder);
-
-      campo.options.forEach(opt => {
-        const option = document.createElement("option");
-        option.value = opt;
-        option.textContent = opt;
-        input.appendChild(option);
+      campo.options.forEach(options => {
+        const o = document.createElement("option");
+        o.value = options;
+        o.innerText = options;
+        input.appendChild(o);
       });
     } else if (campo.type === "textarea") {
-      input = document.createElement("textarea")
-      input.type = campo.type;
+      input = document.createElement("textarea");
     } else {
       input = document.createElement("input");
       input.type = campo.type;
     }
 
-    input.name = campo.name;
-    input.required = true;
+    const btn = document.createElement("button");
+    btn.innerText = "Enviar";
 
-    wrapper.append(label, input);
-    form.appendChild(wrapper);
-  });
-}
+    btn.onclick = () => {
+      if (!input.value) return;
 
+      respostas[campo.label] = input.value;
+      userMsg(input.value);
+      passo++;
+      inputArea.innerHTML = "";
+      proximaPergunta();
+    };
 
-
-function enviar() {
-  if (!servicoAtual) {
-    alert("Selecione um serviço.");
-    return;
+    inputArea.append(input, btn);
   }
 
-  const campos = form.querySelectorAll("input, select, textarea");
 
-  for (const campo of campos) {
-    if (!campo.value) {
-      campo.focus();
-      return;
+  //envio para whatsapp
+
+  function finalizar() {
+    const numero_enviar = "5587996394734";
+    let texto = "Olá! Quero contratar um serviço Saints:%0A";
+    texto += `%0AServiço: ${servico}%0A`;
+
+    for (const k in respostas) {
+      texto += `${k} ${respostas[k]}%0A`;
     }
+
+    window.open(
+      `https://wa.me/${numero_enviar}?text=${texto}`,
+      "_blank"
+    );
   }
 
-  let mensagem = `Olá! gostaria de fazer um Movimento Saints.%0A`;
-  mensagem += `%0AServiço: ${servicoAtual}%0A`;
 
-  campos.forEach(campo => {
-    const label = campo.previousElementSibling.textContent;
-    mensagem += `${label}: ${campo.value}%0A`;
+  //abrir e fechar o chat
+
+  const toggleChat = document.getElementById("chat-toggle");
+  const chat = document.querySelector(".chat-atendimento");
+  const closeChat = document.getElementById("close-chat");
+
+
+  toggleChat.addEventListener("click", () => {
+    chat.classList.toggle("open");
+
+    if (chat.classList.contains("open") && mensagens.children.length === 0) {
+      botMsg("Olá! Bem-vindo ao atendimento da Saints");
+      perguntarServico();
+    }
+    closeChat.onclick = () => chat.classList.remove("open");
   });
 
-  const telefone = "5587996394734";
-  window.open(`https://wa.me/${telefone}?text=${mensagem}`, "_blank");
-}
 
 
-const toggleChat = document.getElementById("chat-toggle");
-const chat = document.querySelector(".chat-orçamento");
-
-toggleChat.addEventListener("click", (e) => {
-  e.stopPropagation();
-  chat.classList.toggle("clicked");
 });
-
-chat.addEventListener("click", (e) => {
-  e.stopPropagation(); 
-});
-
-document.addEventListener("click", () => {
-  if (chat.classList.contains("clicked")) {
-    chat.classList.remove("clicked");
-  }
-});
-
 

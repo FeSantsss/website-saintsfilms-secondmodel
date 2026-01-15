@@ -98,22 +98,18 @@
       <p id="p-in-chat-toggle">Agende seu projeto</p>
     </button>
 
-    <section class="chat-orçamento">
-      <h2 id="h2-in-chat">Crie seu Movimento</h2>
-      <div class="campo">
-        <label>Qual o tipo de serviço?</label>
-        <select id="servico">
-          <option value="">Selecione</option>
-          <option value="casamento">Casamento</option>
-          <option value="reels">Produção de Reels</option>
-          <option value="videoAereo">Vídeo Aéreo</option>
-          <option value="evento">Evento</option>
-        </select>
+    <div class="chat-atendimento">
+      <div class="chat-header">
+        <span class="span-in-chat">Saints Atendimento</span>
+        <div class="chat-actions">
+          <button onClick="window.location.reload()" id="reset-chat">↺</button>
+          <button id="close-chat">✕</button>
+        </div>
       </div>
-      <form id="formulario"></form>
-      <button class="chat-btn-submit-form" onclick="enviar()">Enviar</button>
-    </section>
-    <main class="container-test-main" id="home-nav">
+
+      <div id="mensagens"></div>
+      <div id="input-area"></div>
+    </div>
       
 
       <section class="container-hero">
