@@ -152,8 +152,8 @@
 
 #chat-toggle:hover {
   transition: 0.5s;
-  background-color: var(--gray-hover);
-  transform: scale(102%);
+  background-color: var(--black-main);
+  transform: scale(101%);
 }
 
 #p-in-chat-toggle {
