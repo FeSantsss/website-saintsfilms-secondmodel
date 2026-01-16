@@ -63,6 +63,14 @@
   height: 60px;
 }
 
+.chat-header::before{
+  background-image: url(midia/images/saints-logo.png);
+  background-size: 26px;
+  content: "";  
+  width: 26px;
+  height: 26px;
+}
+
 .chat-actions button {
   background: none;
   border: none;
