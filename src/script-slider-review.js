@@ -65,7 +65,6 @@ carrossel.addEventListener("touchend", (e) => {
   handSwipe();
 });
 
-
   
 function nextSlide() {
   index = (index + 1) % cards.length;
