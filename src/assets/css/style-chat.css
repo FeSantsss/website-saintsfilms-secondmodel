@@ -64,7 +64,7 @@
 }
 
 .chat-header::before{
-  background-image: url(midia/images/saints-logo.png);
+  background-image: url(/src/midia/images/saints-logo.png);
   background-size: 26px;
   content: "";  
   width: 26px;
@@ -179,7 +179,7 @@
 }
 
 #p-in-chat-toggle::before {
-  content: url(midia/images/chat-4-24.png);
+  content: url(/src/midia/images/chat-4-24.png);
   margin-right: 10px;
   vertical-align: middle;
 }
