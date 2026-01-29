@@ -49,10 +49,14 @@
 }
 
 .container-lastsection-black {
-  background: var(--gradient-perfect-blackgray);
-  padding: var(--space-lg) var(--space-md) var(--space-lg) var(--space-md);
+  background: var(--gradient-perfect-gray);
+  padding: var(--space-extreme-lg) var(--space-md) var(--space-ex-lg) var(--space-md);
   max-width: 900px auto;
-  text-align: center;
+  color: var(--white-soft);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .h3-announce-area-white {
@@ -63,11 +67,11 @@
   line-height: 1.25;
 }
 
-.layout-only {
-  height: 200px;
-  background: var(--gradient-perfect-gray);
-
+::selection {
+  background-color: #ffffff; /* Cor de fundo da seleção */
+  color: #000000;            /* Cor do texto selecionado */
 }
+
 
 /* show with timeline in CSS */
 
@@ -220,8 +224,30 @@
 .client-review {
   color: var(--white-soft);
   font-size: 17px;
-  margin: 0px 20px
+  margin: 0px 20px;
+}
 
+/* dentro da container-lastsection-black*/
+
+.numbers-view-year{
+  font-size: 80px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 0.5px white;
+  font-family: var(--font-tertiary);
+}
+
+@media (min-width: 700px){
+  .numbers-view-year{
+    font-size: 120px;
+  }
+}
+@media (min-width: 1200px){
+  .numbers-view-year{
+    font-size: 200px;
+    -webkit-text-stroke: 1.5px white;
+  }
 }
 
 
@@ -367,7 +393,6 @@ button,
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  
 }
 
 .video-horizontal-card {
@@ -395,20 +420,23 @@ button,
   margin: auto;
   width: 60px;
   height: 60px;
-  border-radius: 50%;
+  border-radius: 100%;
   border: none;
-  background: rgba(0,0,0,0.65);
-  color: #fff;
+  background: none;
+  box-shadow: 1px 5px 30px 15px rgba(0, 0, 0, 0.173);
+  color: #ffffff;
   font-size: 37px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform .2s ease, opacity .2s ease;
+  transition: 1s;
 }
 
 .play-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
+  color: #e1e1e3;
+  transition: 1s;
 }
 
 .announce-info-h3 {
