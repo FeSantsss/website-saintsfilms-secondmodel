@@ -47,20 +47,21 @@ html::-webkit-scrollbar {
 }
 
 .h1-who-are-we{
-  font-family: var(--font-secondary-medium);
-  font-size: clamp(2rem, 4vw, 6.30rem);
+  font-family: var(--font-primary);
+  font-size: clamp(2rem, 3vw, 6rem);
+  font-weight: var(--font-regular);
 
   grid-row: 2 / 4;
   grid-column: 4 /  8;
 }
 strong{
-  font-family: var(--font-secondary-bold);
+  font-family: var(--font-primary);
+  font-weight: var(--font-semibold);
 }
 
 
 @media (max-width: 850px) {
   .h1-who-are-we{
-    font-family: var(--font-secondary-medium);
     font-size: clamp(1.8rem, 7vw, 15vw);
 
     grid-row: 2 / 3;

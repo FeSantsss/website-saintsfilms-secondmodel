@@ -2,7 +2,7 @@
   --bg-main: #f5f5f7;
   --bg-card: #ffffff;
   --bg-user: #0b0b0b;
-  --bg-bot: #f1f1f3;
+  --bg-bot: #ececf0;
 
   --text-main: #1d1d1f;
   --text-muted: #6e6e73;
@@ -18,7 +18,7 @@
   bottom: 90px;
   right: 20px;
   width: 320px;
-  background: var(--bg-card);
+  background: var(--bg-main);
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
   display: none;
@@ -29,14 +29,14 @@
 }
 
 .chat-atendimento.open {
-  animation: chatAnimationOpen 0.5s forwards;
+  animation: chatAnimationOpen 0.9s forwards;
   display: flex;
 }
 
 @keyframes chatAnimationOpen {
   from {
-    scale: 10%;
-    translate: 50% 50%;
+    scale: 5%;
+    translate: 60% 50%;
     opacity: 0;
   }
   to {
@@ -139,6 +139,8 @@
   resize: none;
 }
 
+
+
 #input-area button {
   background: #000;
   color: #fff;
@@ -167,7 +169,6 @@
 #chat-toggle:hover {
   transition: 0.5s;
   background-color: var(--black-main);
-  transform: scale(101%);
 }
 
 #p-in-chat-toggle {

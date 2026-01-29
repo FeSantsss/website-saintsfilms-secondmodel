@@ -37,7 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function perguntarServico() {
-    botMsg("Qual serviço você deseja contratar?");
+    setTimeout(() => {
+      botMsg("Qual serviço você deseja contratar?");
+    }, 500);
 
     const select = document.createElement("select");
     select.innerHTML = `
@@ -49,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
     const btn = document.createElement("button");
-    btn.innerText = "Continuar";
+    btn.textContent = "Continuar";
 
     btn.onclick = () => {
       if (!select.value) return;
@@ -65,9 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  //delay de mensagem
+  //sistema de mensagens
 
-  function botMsg(texto, delay = 600) {
+  function botMsg(texto, delay = 800) {
     setTimeout(() => {
       const div = document.createElement("div");
       div.className = "msg bot";
@@ -163,15 +165,14 @@ document.addEventListener("DOMContentLoaded", () => {
   toggleChat.addEventListener("click", () => {
     chat.classList.toggle("open");
 
-
-    if (chat.classList.contains("open") && mensagens.children.length === 0) {
-      botMsg("Olá! Bem-vindo ao atendimento da Saints");
-      perguntarServico();
-    }
+    setTimeout(() => {
+      if (chat.classList.contains("open") && mensagens.children.length === 0) {
+        botMsg("Olá! Bem-vindo ao atendimento da Saints");
+        perguntarServico();
+      }
+    }, 400);
     closeChat.onclick = () => chat.classList.remove("open");
   });
-
-
 
 });
 

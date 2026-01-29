@@ -1,5 +1,0 @@
-import './assets/js/script-menu-open.js'
-import './assets/js/script-contact-menu.js'
-import './assets/js/script-chat.js'
-import './assets/js/script-scrollbar.js'
-import './assets/js/script-slider-review.js'

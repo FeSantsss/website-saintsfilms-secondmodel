@@ -20,25 +20,25 @@ const intervalSlide = setInterval(() => {
   if (index > cards.length - 1) {
     index = 0;
   }
-}, timeToSkip);
+}, timeToSkip, {passive: true});
 
 
 next.addEventListener('click', () => {
   index = (index + 1) % cards.length;
   showSlide(index);
-});
+}, {passive: true});
 
 prev.addEventListener('click', () => {
   index = (index - 1 + cards.length) % cards.length;
   showSlide(index);
-});
+}, {passive: true});
 
 dots.forEach((dot, i) => {
   dot.addEventListener('change', () => {
     index = i;
     showSlide(index);
   });
-});
+}, {passive: true});
 
 // Eventos do carrossel com Touch Event
 const carrossel = document.querySelector(".carrossel-track");
@@ -46,24 +46,13 @@ const carrossel = document.querySelector(".carrossel-track");
 let startX = 0;
 let endX = 0;
 
-function handSwipe(){
-  const distance = endX - startX;
-  const minSwipe = 50;
-
-  if (distance > minSwipe){
-    prevSlide();
-  } else if (distance < -minSwipe) {
-    nextSlide();
-  }
-}
-
 carrossel.addEventListener("touchstart", (e) => {
   startX = e.touches[0].clientX;
-});
+}, {passive: true});
 carrossel.addEventListener("touchend", (e) => {
   endX = e.changedTouches[0].clientX;
   handSwipe();
-});
+}, {passive: true});
 
   
 function nextSlide() {
@@ -76,6 +65,15 @@ function prevSlide() {
   showSlide(index);
 }
 
+function handSwipe(){
+  const distance = endX - startX;
+  const minSwipe = 50;
 
+  if (distance > minSwipe){
+    prevSlide();
+  } else if (distance < -minSwipe) {
+    nextSlide();
+  }
+}
 
 showSlide(0);
