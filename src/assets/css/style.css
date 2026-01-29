@@ -230,7 +230,7 @@
 /* dentro da container-lastsection-black*/
 
 .numbers-view-year{
-  font-size: 80px;
+  font-size: 60px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: transparent;
@@ -240,7 +240,7 @@
 
 @media (min-width: 700px){
   .numbers-view-year{
-    font-size: 120px;
+    font-size: 100px;
   }
 }
 @media (min-width: 1200px){
