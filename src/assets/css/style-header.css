@@ -38,7 +38,7 @@ header {
 }
 
 .logo-icon-saints {
-  width: 90px;
+  width: 89px;
 }
 
 .burguer-menu {
@@ -46,7 +46,7 @@ header {
   position: fixed;
   top: 30px;
   right: 24px;
-  z-index: 9999;
+  z-index: 999999;
 }
 
 .nav-header-menu {
@@ -65,7 +65,7 @@ header {
     height: 100%;
     width: 100vw;
     width: -webkit-fill-available;
-    z-index: 8888;
+    z-index: 99999;
     
     background: #ffffffde;
     backdrop-filter: blur(35px);
