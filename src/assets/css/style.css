@@ -57,6 +57,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .h3-announce-area-white {
@@ -238,15 +239,60 @@
   font-family: var(--font-tertiary);
 }
 
+.status-numbers{
+  display: grid;
+  grid-template: repeat(4, 1fr) / auto auto;
+  margin: 150px 0px;
+  justify-items: start;
+  align-items: end;
+  gap: 10px;
+
+  font-family: var(--font-primary);
+}
+.counter{
+  font-size: 80px;
+
+  color: transparent;
+  -webkit-text-stroke: 0.5px white;
+  font-family: var(--font-tertiary);
+  justify-self: end;
+
+}
+
+.p-counter{
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
 @media (min-width: 700px){
   .numbers-view-year{
     font-size: 100px;
   }
+  .counter{
+    font-size: 100px;
+
+  }
+
+  .p-counter{
+    font-size: 20px;
+  
+  }
 }
 @media (min-width: 1200px){
   .numbers-view-year{
-    font-size: 200px;
-    -webkit-text-stroke: 1.5px white;
+    font-size: 150px;
+    -webkit-text-stroke: 1px white;
+  }
+  .counter{
+    font-size: 120px;
+
+  }
+
+  .p-counter{
+    font-size: 30px;
+  
   }
 }
 
