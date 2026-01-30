@@ -7,8 +7,6 @@ Seções construidas com o uso de tecnologias e conhecimento de ponta.
 
 ### Arquitetura do Projeto
 
-- Aplicação multi-page estática
-- Build gerado com Vite
 - Estrutura organizada por páginas e assets
 - Preparado para futura migração para SPA com React Router
 - Dev Deploy na vercel e Prod Deploy futuro na Locaweb
@@ -17,7 +15,6 @@ Seções construidas com o uso de tecnologias e conhecimento de ponta.
 - HTML 5
 - CSS 3
 - JavaScript (ES6+)
-- Vite
 - Vercel
 
 ### Autor e Produtor:
